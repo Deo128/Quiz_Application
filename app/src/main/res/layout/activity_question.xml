@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/quizbackpic"
+    android:foregroundTint="#050101"
+    tools:context=".QuestionActivity">
+
+    <Button
+        android:id="@+id/b4"
+        android:layout_width="190dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/my_button"
+        android:backgroundTint="#FFFFFF"
+        android:strokeWidth="10"
+        android:text="Button"
+
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b2"
+        app:layout_constraintVertical_bias="0.26" />
+
+    <Button
+        android:id="@+id/b3"
+        android:layout_width="190dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/my_button"
+        android:backgroundTint="#FFFFFF"
+        android:text="Button"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b1"
+        app:layout_constraintVertical_bias="0.26" />
+
+    <Button
+        android:id="@+id/b1"
+        android:layout_width="190dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#FFFFFF"
+        android:background="@drawable/my_button"
+        android:text="Button"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionView" />
+
+    <Button
+        android:id="@+id/b2"
+        android:layout_width="190dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/my_button"
+        android:backgroundTint="#FFFFFF"
+        android:text="Button"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionView" />
+
+    <TextView
+        android:id="@+id/questionView"
+        android:layout_width="384dp"
+        android:layout_height="241dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:layout_marginBottom="300dp"
+        android:background="@drawable/my_button"
+        android:backgroundTint="#FFFFFF"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreView" />
+
+    <EditText
+        android:id="@+id/scoreView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:ems="10"
+        android:hint="Score: "
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
