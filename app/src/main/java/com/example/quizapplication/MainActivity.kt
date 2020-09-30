@@ -4,11 +4,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var startGame : Button
-    lateinit var exitApp :  Button
+    lateinit var startGame: Button
+    lateinit var exitApp: Button
+    lateinit var enterName: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,10 +20,16 @@ class MainActivity : AppCompatActivity() {
 
         startGame = findViewById(R.id.startButton)
         exitApp = findViewById(R.id.mainMenuButton)
+        enterName = findViewById(R.id.nameTextView)
 
         startGame.setOnClickListener() {
-            StartQuestionActivity()
-            finish()
+
+            if (enterName.text.toString().isEmpty()) {
+                Toast.makeText(this, "Please enter your name!", Toast.LENGTH_LONG).show()
+            } else {
+                val intent = Intent(this, QuestionActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         exitApp.setOnClickListener() {
@@ -28,9 +37,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun StartQuestionActivity()  {
 
-        val intent = Intent(this, QuestionActivity::class.java)
-        startActivity(intent)
-    }
 }
