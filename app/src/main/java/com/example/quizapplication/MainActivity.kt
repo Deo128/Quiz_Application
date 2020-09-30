@@ -4,8 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,20 +15,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         startGame = findViewById(R.id.startButton)
-        exitApp = findViewById(R.id.exitButton)
-
-
+        exitApp = findViewById(R.id.mainMenuButton)
 
         startGame.setOnClickListener() {
             StartQuestionActivity()
-
+            finish()
         }
 
         exitApp.setOnClickListener() {
             finishAndRemoveTask()
-
         }
     }
 
@@ -38,12 +32,5 @@ class MainActivity : AppCompatActivity() {
 
         val intent = Intent(this, QuestionActivity::class.java)
         startActivity(intent)
-
     }
-
-
-
-
-
-
 }

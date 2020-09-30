@@ -10,14 +10,10 @@ import android.widget.TextView
 class QuestionActivity : AppCompatActivity() {
 
 
-    var scoreCount = 0
-    private var currentPos: Int = 1
+    open var scoreCount = 0
     var listOfQuestions = getQuestions() // Hämtar listan med frågor från Question klassen.
-    private var endGame = 0
 
-
-
-    private lateinit var myAnswer: String
+    lateinit var myAnswer: String
     lateinit var questionText: TextView
     lateinit var btn1: Button
     lateinit var btn2: Button
@@ -36,15 +32,12 @@ class QuestionActivity : AppCompatActivity() {
         btn3 = findViewById<Button>(R.id.b3)
         btn4 = findViewById<Button>(R.id.b4)
 
-
-
-        Log.d(
-            "!!!",
+        Log.d("!!!",
             "List size = ${listOfQuestions.size}"
-        ) // Kollar så att min lista med frågor fungerar och går att hämta.
+        ) // Kollar så att min lista med frågor fungerar och går att hämta, kollar även listans storlek.
 
 
-        askQuestion()
+        setQuestion()
 
         btn1.setOnClickListener() {
 
@@ -52,46 +45,38 @@ class QuestionActivity : AppCompatActivity() {
                 Log.d("!!!", "Correct answer!")
                 scoreCount++
                 checkPosition()
+
             } else {
                 Log.d("!!!", "Wrong answer!")
-
                 checkPosition()
-
             }
-
         }
         btn2.setOnClickListener() {
 
             if (btn2.text == myAnswer) {
                 Log.d("!!!", "Correct answer!")
                 scoreCount++
-
                 checkPosition()
 
             } else {
                 Log.d("!!!", "Wrong answer")
-
                 checkPosition()
-
             }
-
         }
 
         btn3.setOnClickListener() {
 
             if (btn3.text == myAnswer) {
                 Log.d("!!!", "Correct answer!")
-
                 scoreCount++
-
                 checkPosition()
+
             } else {
                 Log.d("!!!", "Wrong answer!")
-
                 checkPosition()
             }
-
         }
+
         btn4.setOnClickListener() {
 
             if (btn4.text == myAnswer) {
@@ -101,48 +86,43 @@ class QuestionActivity : AppCompatActivity() {
 
             } else {
                 Log.d("!!!", "Wrong answer!")
-
                 checkPosition()
-
-
             }
-
         }
     }
 
 
     private fun checkPosition() {
 
-        currentPos++
-
         when{
-            currentPos <= listOfQuestions.size -> {
-                askQuestion()
+            listOfQuestions.size  != 0 -> {
+                setQuestion()
             }else -> {
                val intent = Intent(this, DisplayScoreActivity::class.java)
+                intent.putExtra("Score", scoreCount)
                 startActivity(intent)
-
+                finish()
+            }
         }
-
-        }
-
-
     }
 
-    private fun askQuestion() {
-
-        val question: Question = listOfQuestions[currentPos - 1]
-
-        myAnswer = question.correctAnswer
-        questionText.text = question.question
-        btn1.text = question.answer1
-        btn2.text = question.answer2
-        btn3.text = question.answer3
-        btn4.text = question.answer4
-        quizScore.text = "Current score: $scoreCount"
+    private fun setQuestion() : Question {
 
 
-        Log.d("!!!", "Current pos = $currentPos")
+        val rnd = (0 until listOfQuestions.size).random()
+        var qst : Question = listOfQuestions.removeAt(rnd)
+
+
+        myAnswer = qst.correctAnswer
+        questionText.text = qst.question
+        btn1.text = qst.answer1
+        btn2.text = qst.answer2
+        btn3.text = qst.answer3
+        btn4.text = qst.answer4
+        quizScore.text = "Current score: ${scoreCount}"
+
+        //Log.d("!!!", "Current pos = $currentPos")
+        return qst
 
     }
 }
@@ -151,44 +131,5 @@ class QuestionActivity : AppCompatActivity() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*
-    private fun defaultOptions() {
-
-        val options = ArrayList<Button>()
-        options.add(0, btn1)
-        options.add(1, btn2)
-        options.add(2, btn3)
-        options.add(3, btn4)
-
-        for(option in options) {
-            option.typeface = Typeface.DEFAULT
-        }
-
-
-    }
-
-
-     */
 
 

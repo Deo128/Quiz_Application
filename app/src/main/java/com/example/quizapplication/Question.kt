@@ -8,6 +8,7 @@ class Question(
                var answer4: String,
                var correctAnswer: String)
 
+
 fun getQuestions(): ArrayList<Question> {
 
     val listOfQuestions = ArrayList<Question>()
