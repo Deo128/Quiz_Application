@@ -24,7 +24,9 @@ class DisplayScoreActivity : AppCompatActivity() {
 
         val intent = intent
         var score: Int = intent.getIntExtra("Score", 0)
-        checkScore.text = "You scored: ${score}/50 points!"
+        var username : String? = intent.getStringExtra("userName")
+
+        checkScore.text = "Congratulation ${username.toString()} you scored: ${score}/50 points!"
 
         goToMainMenu.setOnClickListener() {
 

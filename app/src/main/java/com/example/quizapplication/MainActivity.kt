@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var startGame: Button
     lateinit var exitApp: Button
     lateinit var enterName: TextView
+    lateinit var username : String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,8 +27,11 @@ class MainActivity : AppCompatActivity() {
 
             if (enterName.text.toString().isEmpty()) {
                 Toast.makeText(this, "Please enter your name!", Toast.LENGTH_LONG).show()
+
             } else {
+                username = enterName.text.toString()
                 val intent = Intent(this, QuestionActivity::class.java)
+                intent.putExtra("userName", username)
                 startActivity(intent)
             }
         }

@@ -25,6 +25,8 @@ class QuestionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
 
+
+
         questionText = findViewById(R.id.questionView)
         quizScore = findViewById(R.id.scoreView)
         btn1 = findViewById<Button>(R.id.b1)
@@ -94,12 +96,17 @@ class QuestionActivity : AppCompatActivity() {
 
     private fun checkPosition() {
 
+        val getIntent = intent
+        var username: String? = getIntent.getStringExtra("userName")
+        Log.d("!!!", "$username")
+
         when{
             listOfQuestions.size  != 0 -> {
                 setQuestion()
             }else -> {
                val intent = Intent(this, DisplayScoreActivity::class.java)
                 intent.putExtra("Score", scoreCount)
+                intent.putExtra("userName", username)
                 startActivity(intent)
                 finish()
             }
