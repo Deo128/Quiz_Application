@@ -98,7 +98,7 @@ class QuestionActivity : AppCompatActivity() {
 
         val getIntent = intent
         var username: String? = getIntent.getStringExtra("userName")
-        Log.d("!!!", "$username")
+
 
         when{
             listOfQuestions.size  != 0 -> {
@@ -119,7 +119,6 @@ class QuestionActivity : AppCompatActivity() {
         val rnd = (0 until listOfQuestions.size).random()
         var qst : Question = listOfQuestions.removeAt(rnd)
 
-
         myAnswer = qst.correctAnswer
         questionText.text = qst.question
         btn1.text = qst.answer1
@@ -128,7 +127,6 @@ class QuestionActivity : AppCompatActivity() {
         btn4.text = qst.answer4
         quizScore.text = "Current score: ${scoreCount}"
 
-        //Log.d("!!!", "Current pos = $currentPos")
         return qst
 
     }
