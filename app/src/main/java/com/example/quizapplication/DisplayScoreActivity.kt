@@ -26,7 +26,6 @@ class DisplayScoreActivity : AppCompatActivity() {
         var score: Int = intent.getIntExtra("Score", 0)
         var username : String? = intent.getStringExtra("userName")
 
-
         displayScore.text = "You scored: ${score}/25 points!"
         displayName.text = "Well done ${username.toString()}"
 

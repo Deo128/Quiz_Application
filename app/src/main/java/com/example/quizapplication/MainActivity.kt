@@ -10,17 +10,14 @@ import android.widget.Toast
 class MainActivity : AppCompatActivity() {
 
     lateinit var startGame: Button
-    lateinit var exitApp: Button
     lateinit var enterName: TextView
     lateinit var username : String
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         startGame = findViewById(R.id.startButton)
-        exitApp = findViewById(R.id.mainMenuButton)
         enterName = findViewById(R.id.nameTextView)
 
         startGame.setOnClickListener() {
@@ -33,13 +30,9 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this, QuestionActivity::class.java)
                 intent.putExtra("userName", username)
                 startActivity(intent)
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                finish()
             }
         }
-
-        exitApp.setOnClickListener() {
-            finishAndRemoveTask()
-        }
     }
-
-
 }
