@@ -60,8 +60,6 @@ class QuestionActivity : AppCompatActivity() {
             }
         }
 
-
-
         btn2.setOnClickListener() {
 
             if (btn2.text == myAnswer) {
@@ -162,7 +160,6 @@ class QuestionActivity : AppCompatActivity() {
 
         return qst
     }
-
 
     private fun setButtonDefault() {
 
