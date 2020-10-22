@@ -17,7 +17,6 @@ class DisplayScoreActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_display_score)
 
-
         goToMainMenu = findViewById(R.id.mainMenuButton)
         displayScore = findViewById(R.id.scoreView)
         displayName = findViewById(R.id.nameView)
