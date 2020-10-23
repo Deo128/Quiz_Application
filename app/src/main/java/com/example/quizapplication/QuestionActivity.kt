@@ -17,7 +17,7 @@ class QuestionActivity : AppCompatActivity() {
 
     var progression = 0
     var scoreCount = 0
-    var listOfQuestions: ArrayList<Question>? = null // Hämtar listan med frågor från Question klassen.
+    var listOfQuestions: ArrayList<Question> = ArrayList<Question>() // Hämtar listan med frågor från Question klassen.
 
     lateinit var myAnswer: String
     lateinit var questionText: TextView
@@ -129,7 +129,7 @@ class QuestionActivity : AppCompatActivity() {
         var username: String? = getIntent.getStringExtra("userName")
 
         when{
-            listOfQuestions!!.size  != 0 -> {
+            listOfQuestions.size  != 0 -> {
                 setQuestion()
             }else -> {
                val intent = Intent(this, DisplayScoreActivity::class.java)
@@ -144,8 +144,8 @@ class QuestionActivity : AppCompatActivity() {
 
     private fun setQuestion() : Question {
 
-        val rnd = (0 until listOfQuestions!!.size).random()
-        var qst : Question = listOfQuestions!!.removeAt(rnd)
+        val rnd = (0 until listOfQuestions.size).random()
+        var qst : Question = listOfQuestions.removeAt(rnd)
 
         setButtonDefault()
 
