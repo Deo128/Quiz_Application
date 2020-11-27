@@ -1,5 +1,9 @@
 package com.example.quizapplication
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
 class Question(
                var question: String,
                var answer1: String,
@@ -65,6 +69,14 @@ fun getQuestions(): ArrayList<Question> {
 
     return listOfQuestions
 }
+
+@Entity(tableName = "player")
+class Player(@PrimaryKey(autoGenerate = true) var id: Int,
+             @ColumnInfo(name = "name") var playerName: String,
+             @ColumnInfo(name = "score") var playerScore: Int )
+
+
+
 
 
 
