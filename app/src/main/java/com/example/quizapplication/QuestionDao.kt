@@ -7,15 +7,14 @@ import androidx.room.Query
 
 
 @Dao
-interface PlayerDao {
+interface QuestionDao {
 
     @Insert
-    fun insert(player: Player)
-
+    fun insert(question: Question)
 
     @Delete
-    fun delete(player: Player)
+    fun delete(question: Question)
 
-    @Query("SELECT * FROM player")
-    fun getAll() : List<Player>
+    @Query("SELECT * FROM questions")
+    fun getAll() : List<Question>
 }
