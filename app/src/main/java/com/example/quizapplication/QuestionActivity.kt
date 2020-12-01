@@ -22,7 +22,6 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
 
     var progression = 0
     var scoreCount = 0
-    //var listOfQuestions: ArrayList<Question> = ArrayList<Question>() // Hämtar listan med frågor från Question klassen.
 
     private lateinit var job: Job
     override val coroutineContext: CoroutineContext
@@ -41,7 +40,6 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
-        //listOfQuestions = getQuestions()
         questionText = findViewById(R.id.questionView)
         btn1 = findViewById<TextView>(R.id.b1)
         btn2 = findViewById<TextView>(R.id.b2)
@@ -51,6 +49,8 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
         job = Job()
         db = QuestionDatabase.getInstance(this)
 
+
+        // Alla frågor som läggs till i databasen med hjälp av addNewQuestion funktionen.
 /*
         addNewQuestion(Question(0,"Which one of these characters is not friends with Harry Potter?", "Ron Weasley", "Neville Longbottom", "Draco Malfoy", "Hermione Granger", "Draco Malfoy"))
         addNewQuestion(Question(0,"What is the color of Donald Duck's bowtie?", "Red", "Yellow", "Blue", "White", "Red"))
@@ -77,7 +77,6 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
         addNewQuestion(Question(0,"Which astrological sign is a crab?", "Pisces", "Aquarius", "Cancer", "Virgo", "Cancer"))
         addNewQuestion(Question(0,"In which decade does the netflix series 'Stranger Things' take place?", "'70s'", "'80s'", "'90s'", "early 2000s", "'80s'"))
         addNewQuestion(Question(0,"Which country gifted the Statue of Liberty to the U.S.?", "Germany", "China", "France", "Italy", "France"))
-
 
  */
 
@@ -166,33 +165,6 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
 
     }
 
-/*
-    private fun checkPosition() {
-
-        val getIntent = intent
-        var username: String? = getIntent.getStringExtra("userName")
-        val mutableList = mutableListOf<Question>()
-        val classList = QuestionList(mutableList)
-
-        when{
-
-            }{
-               val intent = Intent(this, DisplayScoreActivity::class.java)
-                intent.putExtra("Score", scoreCount)
-                intent.putExtra("userName", username)
-                startActivity(intent)
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-                finish()
-            }
-        }
-    }
-
-
- */
-
-
-
-
     fun loadNewQuestion() {
         currentQuestion = questionList?.getNewQuestion()
         val getIntent = intent
@@ -216,8 +188,10 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
             progressionBar.progress = progression
             progressionBar.max = 25
         }
-
     }
+
+
+   // Funktion som laddar alla frågor som vi lagrat i vår databas.
 
     fun loadAllQuestions() {
         val questions = async(Dispatchers.IO) {
@@ -230,6 +204,8 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
             loadNewQuestion()
         }
     }
+
+    // Denna funktion sätter varje knapp tillbaks till sitt defaultvärde.
 
     private fun setButtonDefault() {
 
@@ -246,7 +222,7 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
         }
     }
 
-    /*
+
     fun addNewQuestion(question: Question) {
 
         launch(Dispatchers.IO) {
@@ -254,7 +230,6 @@ class QuestionActivity : AppCompatActivity(), CoroutineScope {
         }
     }
 
-     */
 }
 
 

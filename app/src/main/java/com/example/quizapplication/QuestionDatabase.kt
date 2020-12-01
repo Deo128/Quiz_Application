@@ -5,6 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
+//Singleton implementeras genom att man skapar en klass med en metod som skapar en instans om det inte redan finns en.
+// Om det finns en instans av klassen, returnerar metoden en referens av det objektet.
 
 @Database(entities = arrayOf(Question::class), version = 1)
 abstract class QuestionDatabase : RoomDatabase() {

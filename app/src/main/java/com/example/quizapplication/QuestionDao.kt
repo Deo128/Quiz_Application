@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 
+// Dao = Data access object, ett sätt för oss att interagera med vår databas.
 
 @Dao
 interface QuestionDao {
@@ -17,4 +18,5 @@ interface QuestionDao {
 
     @Query("SELECT * FROM questions")
     fun getAll() : List<Question>
+
 }
